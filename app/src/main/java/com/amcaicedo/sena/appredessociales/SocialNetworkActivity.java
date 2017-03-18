@@ -21,6 +21,9 @@ public class SocialNetworkActivity extends AppCompatActivity implements View.OnC
     ImageView imgFacebook, imgTwitter, imgGooglePlus, imgInstagram, imgLinkedIn;
     LinearLayout lytRedes;
 
+    Intent sendIntent;
+    String texto;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,7 @@ public class SocialNetworkActivity extends AppCompatActivity implements View.OnC
 
         lytRedes = (LinearLayout) findViewById(R.id.lytRedes);
 
-        etMensaje = (EditText) findViewById(R.id.etMensaje);
+        etMensaje = (EditText) findViewById(R.id.etMensaje1);
 
         fabRedesSociales = (FloatingActionButton) findViewById(R.id.fabRedesSociales);
         fabRedesSociales.setOnClickListener(this);
@@ -70,41 +73,60 @@ public class SocialNetworkActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
-        /*Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, etMensaje.getText().toString());
-        sendIntent.setType("text/plain");*/
-
         switch (v.getId()){
             case R.id.fabRedesSociales:
-                if (lytRedes.getVisibility() == View.INVISIBLE) {
+                if (lytRedes.getVisibility() == View.GONE) {
                     animar(true);
                     lytRedes.setVisibility(View.VISIBLE);
                 }else{
                     animar(false);
-                    lytRedes.setVisibility(View.INVISIBLE);
+                    lytRedes.setVisibility(View.GONE);
                 }
                 break;
             case R.id.imgFacebook:
-                Intent sendIntent = new Intent();
+                texto = etMensaje.getText().toString();
+                sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Hola mundo");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
                 sendIntent.setType("text/plain");
                 sendIntent.setPackage("com.facebook.orca");
                 startActivity(sendIntent);
-                //Toast.makeText(this, "Tocaste facebook", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.imgTwitter:
-                //sendIntent.setPackage("com.twitter.android");
+                texto = etMensaje.getText().toString();
+                sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.twitter.android");
+                startActivity(sendIntent);
                 break;
             case R.id.imgGooglePlus:
-                //sendIntent.setPackage("com.google.android.apps.plus");
+                texto = etMensaje.getText().toString();
+                sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.google.android.apps.plus");
+                startActivity(sendIntent);
                 break;
             case R.id.imgInstagram:
-                //sendIntent.setPackage("com.instagram.android");
+                texto = etMensaje.getText().toString();
+                sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.instagram.android");
+                startActivity(sendIntent);
                 break;
             case R.id.imgLinkedIn:
-                //sendIntent.setPackage("com.linkedin.android");
+                texto = etMensaje.getText().toString();
+                sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, texto);
+                sendIntent.setType("text/plain");
+                sendIntent.setPackage("com.linkedin.android");
+                startActivity(sendIntent);
                 break;
         }
 
